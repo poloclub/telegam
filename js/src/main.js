@@ -870,7 +870,7 @@
 
         let modelSummaryFactMap = summarizer.globalSummaryMap[dataset];
         let summaryHTML = "";
-        for(let trendType of ["Non-linear","Linear-positive","Linear-negative","Monotonic"]){
+        for(let trendType of ["Non-linear","Linear-positive","Linear-negative","Flat"]){
             let features = modelSummaryFactMap[trendType]["features"], description = modelSummaryFactMap[trendType]["description"];
             if(features.length>0){
                 summaryHTML += "<span class='modelSummaryTrendHeader'>"+trendType+"</span><br>";

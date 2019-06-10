@@ -20,7 +20,7 @@
                 "description" : "<b>8 features</b> have a non-linear trend in their predictions.",
                 "features" : ["CRIM","ZN","NOX","RM","AGE","DIS","TAX","B"]
             },
-            "Monotonic": {
+            "Flat": {
                 "description" : "",
                 "features" : []
             }
@@ -38,8 +38,8 @@
                 "description" : "<b>2 features</b> have a non-linear trend in their predictions.",
                 "features" : ["x","z"]
             },
-            "Monotonic": {
-                "description" : "<b>2 features</b> have approximately monotonous trend in their predictions.",
+            "Flat": {
+                "description" : "<b>2 features</b> have a largely flat trend in their predictions.",
                 "features" : ["cut","table"]
             }
         },
@@ -56,7 +56,7 @@
                 "description" : "<b>5 features</b> have a non-linear trend in their predictions.",
                 "features" : ["fixedAcidity","citricAcid","freeSulfurDioxide","totalSulfurDioxide","sulphates"]
             },
-            "Monotonic" : {
+            "Flat" : {
                 "description" : "",
                 "features" : []
             }
@@ -68,18 +68,18 @@
                     ,"SecondFlrSF","GarageCars","ThreeSsnPorch"]
             },
             "Linear-negative" : {
-                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
-                "features" : ["KitchenAbvGr","TotRmsAbvGrd","GarageYrBlt","EnclosedPorch"]
+                "description" : "<b>2 features</b> have an approximately linearly negative trend in their predictions.",
+                "features" : ["KitchenAbvGr","EnclosedPorch"]
             },
             "Non-linear" : {
                 "description" : "<b>6 features</b> have a non-linear trend in their predictions.",
                 "features" : ["BsmtFinSFOne","GrLivArea","GarageArea","WoodDeckSF","OpenPorchSF","PoolArea"]
             },
-            "Monotonic" : {
-                "description" : "<b>16 features</b> have approximately monotonous trend in their predictions.",
-                "features" : ["MSSubClass","YearRemodAdd","MasVnrArea","BsmtFinSFTwo","BsmtUnfSF",
+            "Flat" : {
+                "description" : "<b>18 features</b> have a largely flat trend in their predictions.",
+                "features" : ["MSSubClass","YearRemodAdd","TotRmsAbvGrd","MasVnrArea","BsmtFinSFTwo","BsmtUnfSF",
                     "LowQualFinSF","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr",
-                    "Fireplaces","ScreenPorch","MiscVal","MoSold","YrSold"]
+                    "Fireplaces","ScreenPorch","MiscVal","GarageYrBlt","MoSold","YrSold"]
             }
         }
     };
