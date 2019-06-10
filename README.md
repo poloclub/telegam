@@ -1,2 +1,2 @@
-# GAM-X
-Generating natural language summarizes for instance-based comparison using GAMs
+# TeleGam
+Combining Visualization and Verbalization for Interpretable Machine Learning
