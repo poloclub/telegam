@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Global Feature Display</title>
+
+    <link href="css/vendor/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+        .line {
+            fill: none;
+            stroke: steelblue;
+            stroke-width: 3;
+        }
+    </style>
+
+    <script src="js/vendor/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/vendor/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.4.0/build/vega.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@3.3.0/build/vega-lite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@4.2.0/build/vega-embed.js"></script>
+</head>
+<body>
+<i class="fa fa-database"></i>:
+<select id="datasetSelector">
+    <option value="housing-gam-instance-data">Housing</option>
+    <option value="ames-housing-gam-instance-data">AMES-Housing</option>
+    <option value="diamonds-gam-instance-data">Diamonds</option>
+    <option value="red-wine-gam-instance-data">Wine</option>
+</select>
+<hr>
+<div id="vis"></div>
+<!--<div id="vis"></div>-->
+</body>
+<script type="text/javascript">
+
+    function drawLineChart(divId, data, minModelPrediction, maxModelPrediction){
+        let width = $("#"+divId).width(), height = $("#"+divId).height();
+
+// 2. Use the margin convention practice
+        let margin = {top: 20, right: 20, bottom: 20, left: 20};
+        width = width - margin.left - margin.right // Use the window's width
+        height = height - margin.top - margin.bottom; // Use the window's height
+
+// 5. X scale will use the index of our data
+        let xScale = d3.scaleLinear()
+            .domain(d3.extent(data, function (d) {
+                return d.featureVal;
+            }))
+            .range([0, width]); // output
+
+// 6. Y scale will use the randomly generate number
+        let yScale = d3.scaleLinear()
+            .domain([minModelPrediction,maxModelPrediction]) // input
+            .range([height, 0]); // output
+
+// 7. d3's line generator
+        let line = d3.line()
+            .x(function(d, i) { return xScale(d.featureVal); }) // set the x values for the line generator
+            .y(function(d) { return yScale(d.prediction); }) // set the y values for the line generator
+            .curve(d3.curveMonotoneX); // apply smoothing to the line
+
+// 1. Add the SVG to the page and employ #2
+        let svg = d3.select("#"+divId).append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// 3. Call the x axis in a group tag
+        svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+// 4. Call the y axis in a group tag
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+// 9. Append the path, bind the data, and call the line generator
+        svg.append("path")
+            .datum(data) // 10. Binds data to the line
+            .attr("class", "line") // Assign a class for styling
+            .attr("d", line); // 11. Calls the line generator
+    }
+
+
+    $("#datasetSelector").on("change",function(evt){
+        let globalFeatureDataMap = {};
+        let modelMinPrediction = undefined, modelMaxPrediction = undefined;
+        $("#vis").html('');
+        d3.json("data/"+$(this).val()+".json",function (error, data) {
+            for(let instanceObj of data){
+                let featureData = instanceObj['data'];
+                for(let featureDataObj of featureData){
+                    let feature = featureDataObj['name'];
+                    if(modelMinPrediction==undefined){
+                        modelMinPrediction = featureDataObj['pdep'];
+                    }else if(modelMinPrediction>featureDataObj['pdep']){
+                        modelMinPrediction = featureDataObj['pdep'];
+                    }
+
+                    if(modelMaxPrediction==undefined){
+                        modelMaxPrediction = featureDataObj['pdep'];
+                    }else if(modelMaxPrediction<featureDataObj['pdep']){
+                        modelMaxPrediction = featureDataObj['pdep'];
+                    }
+                    if(feature in globalFeatureDataMap){
+                        globalFeatureDataMap[feature].push({
+                            'featureVal' : featureDataObj['X'],
+                            'prediction' : featureDataObj['pdep'],
+                            'feature' : feature
+                        });
+                    }else {
+                        globalFeatureDataMap[feature] = [{
+                            'featureVal' : featureDataObj['X'],
+                            'prediction' : featureDataObj['pdep'],
+                            'feature' : feature
+                        }];
+                    }
+                }
+            }
+
+            let featureIndex = 0;
+            for(let feature in globalFeatureDataMap){
+                let featureVlSpec = {
+                    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
+                    "data": {"values":globalFeatureDataMap[feature]},
+                    "mark": {
+                        "type" : "line"
+                    },
+                    "encoding": {
+                        "x": {"field": "featureVal", "type": "quantitative"},
+                        "y": {"field": "prediction", "type": "quantitative", "scale": {"domain": [modelMinPrediction,modelMaxPrediction]}},
+                        "color":{"field":"feature"}
+                    }
+                };
+                // The line below sets a specific min, max value on the Y-scale
+                // "y": {"field": "prediction", "type": "quantitative"},
+                // "y": {"field": "prediction", "type": "quantitative", "scale": {"domain": [modelMinPrediction,modelMaxPrediction]}}
+
+                let visDivId = 'feature-'+featureIndex;
+                let visDivHTML = "<div id='"+visDivId+"'></div>";
+                $("#vis").append(visDivHTML);
+                vegaEmbed('#'+visDivId, featureVlSpec, {"actions": false});
+                featureIndex+=1;
+                // drawLineChart(visDivId,globalFeatureDataMap[feature],modelMinPrediction,modelMaxPrediction);
+
+                // if(featureIndex%4==0){
+                // $("#vis").append("<br><br>");
+                // }
+            }
+        });
+    });
+    $("#datasetSelector").trigger("change");
+</script>
+</html>

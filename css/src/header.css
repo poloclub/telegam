@@ -1,0 +1,75 @@
+header {
+    background: var(--main-color) !important;
+    font-size: 18px !important;
+    font-weight: 200 !important;
+    display: flex !important;
+    flex: 0 0 64px !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    color: #ffffff !important;
+}
+
+#header-wrapper {
+    display: flex;
+    flex-flow: column;
+    /* height: 100%; */
+}
+
+.smalltext-header {
+    color: #dddddd;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+.header-value {
+    height: 20px !important;
+}
+
+#header-title-wrapper {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#header-title {
+    width: 200px;
+    /* enforces cursor changes only on title */
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 22px;
+    font-variant: small-caps;
+}
+
+#header-icon {
+    flex: 3;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: flex-end;
+    text-align: right;
+    color: #ffffff;
+}
+
+#header-icon-link {
+    cursor: pointer;
+}
+
+#header-icon-link:link, #header-icon-link:visited, #header-icon-link:link:hover, #header-icon-link:focus, #header-icon-link:active, #menu-icon {
+    color: #ffffff;
+}
+
+.header-value {
+    font-weight: 100 !important;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}

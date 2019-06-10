@@ -1,0 +1,299 @@
+:root {
+    --main-color: #01579B;
+    --background-color: #fafafa;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --gray: rgba(0, 0, 0, 0.15);
+    --highlight: #FFC107;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    /* color: var(--gray) !important; */
+    /* font-family: "Roboto", sans-serif; */
+}
+
+/* full height in bootstrap */
+
+#wrapper {
+    height: 100%;
+    display: table;
+    width: 100%;
+    margin-top: -50px;
+    padding: 50px 0 0 0;
+    /*set left/right padding according to needs*/
+    box-sizing: border-box;
+}
+
+.row {
+    height: 100%;
+    display: table-row;
+}
+
+.row .no-float {
+    display: table-cell;
+    float: none;
+}
+
+.bar.total rect {
+    fill: steelblue;
+}
+
+.bar.positive rect {
+    fill: #D0D9DD;
+}
+
+.bar.negative rect {
+    fill: #79919D;
+}
+
+.bar text {
+    fill: white;
+    font: 12px sans-serif;
+    text-anchor: middle;
+}
+
+.bar.highlight {
+    stroke: var(--highlight);
+    stroke-width: 3px;
+}
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis text.highlight {
+    fill: var(--highlight);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.interceptLine {
+    stroke: grey;
+    stroke-dasharray: 3;
+}
+
+.interceptLabel {
+    fill: black;
+    opacity: .5;
+    font-size: 14px;
+}
+
+.zeroLine {
+    stroke: lightgray;
+    stroke-dasharray: 1;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--main-color);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--main-color);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*.visDiv{*/
+
+/*height: 360px;*/
+
+/*}*/
+
+.instanceValue {
+    /* background-color: #cdcdcd; */
+    color: var(--main-color);
+    font-weight: bold;
+    padding: 0% .5% 0% .5%;
+}
+
+#baseInstanceId, #comparedInstanceId {
+    font-weight: bold;
+}
+
+#instanceComparisonSummary {
+    /*font-size: large;*/
+}
+
+.thresholdSlider {
+    width: 75%;
+}
+
+.detailLevelSlider {
+    width: 35%;
+}
+
+#summarySentence {
+    /*margin-top: 50%;*/
+}
+
+#options {
+    padding: 30px;
+    background-color: var(--background-color);
+    /* flex: 0 0 400px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    border-right: 1px solid var(--border-color);
+    height: 100%;
+}
+
+#vis {
+    padding: 30px;
+}
+
+.d3-tip {
+    line-height: 1;
+    padding: 10px;
+    background: #222222;
+    /* background: rgba(0, 0, 0, 0.8); */
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 8px;
+    width: 100%;
+    line-height: 1;
+    color: #222222;
+    /* color: rgba(0, 0, 0, 0.8); */
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/* Style northward tooltips specifically */
+
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.collapsible {
+    /* background-color: #777; */
+    /* color: var(--main-color); */
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.active, .collapsible:hover {
+    color: white;
+    background-color: var(--main-color);
+}
+
+.content {
+    border-bottom: 1px solid var(--border-color);
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: none;
+    overflow: auto;
+    background-color: white;
+    /* border: 1px solid var(--border-color); */
+}
+
+#modelSummaryTooltip {
+    position: absolute;
+    display: none;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    padding: 10px;
+}
+
+.globalModelSummaryFact {
+    margin: 2.5% 0% 2.5% 0%;
+    cursor: crosshair;
+}
+
+.instanceSummaryRow {
+    height: 33.3%;
+}
+
+hr {
+    background-color: var(--border-color);
+}
+
+h5 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}
+
+.noUi-handle, .noUi-handle-lower {
+    cursor: col-resize !important;
+}
+
+.vega-embed {
+    padding: 0px;
+}
