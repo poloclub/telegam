@@ -297,3 +297,10 @@ h5 {
 .vega-embed {
     padding: 0px;
 }
+
+.modelSummaryTrendHeader{
+    /*background-color: lightgray;*/
+    font-weight: bold;
+    color: #01579b;
+    text-decoration: underline;
+}

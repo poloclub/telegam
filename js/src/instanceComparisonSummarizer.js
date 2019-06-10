@@ -6,8 +6,86 @@
 
     summarizer.intercept = null;
 
-
     summarizer.globalSummaryMap = {
+        "housing-gam-instance-data" : {
+            "Linear-positive" : {
+                "description" : "<b>1 feature</b> has an approximately linearly positive trend in their predictions.",
+                "features" : ["CHAS"]
+            },
+            "Linear-negative" : {
+                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
+                "features" : ["INDUS","RAD","PTRATIO","LSTAT"]
+            },
+            "Non-linear" : {
+                "description" : "<b>8 features</b> have a non-linear trend in their predictions.",
+                "features" : ["CRIM","ZN","NOX","RM","AGE","DIS","TAX","B"]
+            },
+            "Monotonic": {
+                "description" : "",
+                "features" : []
+            }
+        },
+        "diamonds-gam-instance-data" : {
+            "Linear-positive" : {
+                "description" : "<b>5 features</b> have an approximately linearly positive trend in their predictions.",
+                "features" : ["carat","color","clarity","depth","y"]
+            },
+            "Linear-negative" : {
+                "description" : "",
+                "features" : []
+            },
+            "Non-linear" : {
+                "description" : "<b>2 features</b> have a non-linear trend in their predictions.",
+                "features" : ["x","z"]
+            },
+            "Monotonic": {
+                "description" : "<b>2 features</b> have approximately monotonous trend in their predictions.",
+                "features" : ["cut","table"]
+            }
+        },
+        "red-wine-gam-instance-data" : {
+            "Linear-positive" : {
+                "description" : "<b>2 features</b> have an approximately linearly positive trend in their predictions.",
+                "features" : ["alcohol","residualSugar"]
+            },
+            "Linear-negative" : {
+                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
+                "features" : ["volatileAcidity","chlorides","density","pH"]
+            },
+            "Non-linear" : {
+                "description" : "<b>5 features</b> have a non-linear trend in their predictions.",
+                "features" : ["fixedAcidity","citricAcid","freeSulfurDioxide","totalSulfurDioxide","sulphates"]
+            },
+            "Monotonic" : {
+                "description" : "",
+                "features" : []
+            }
+        },
+        "ames-housing-gam-instance-data" : {
+            "Linear-positive" : {
+                "description" : "<b>9 features</b> have an approximately linearly positive trend in their predictions.",
+                "features" : ["LotFrontage","LotArea","OverallQual","OverallCond","TotalBsmtSF","FirstFlrSF"
+                    ,"SecondFlrSF","GarageCars","ThreeSsnPorch"]
+            },
+            "Linear-negative" : {
+                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
+                "features" : ["KitchenAbvGr","TotRmsAbvGrd","GarageYrBlt","EnclosedPorch"]
+            },
+            "Non-linear" : {
+                "description" : "<b>6 features</b> have a non-linear trend in their predictions.",
+                "features" : ["BsmtFinSFOne","GrLivArea","GarageArea","WoodDeckSF","OpenPorchSF","PoolArea"]
+            },
+            "Monotonic" : {
+                "description" : "<b>16 features</b> have approximately monotonous trend in their predictions.",
+                "features" : ["MSSubClass","YearRemodAdd","MasVnrArea","BsmtFinSFTwo","BsmtUnfSF",
+                    "LowQualFinSF","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr",
+                    "Fireplaces","ScreenPorch","MiscVal","MoSold","YrSold"]
+            }
+        }
+    };
+
+
+    summarizer.globalSummaryMap_old = {
         "ames-housing-gam-instance-data" : [
             {
                 "description":"Not coded yet",

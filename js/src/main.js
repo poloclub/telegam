@@ -860,23 +860,35 @@
 
     function updateGlobalModelSummary(dataset) {
         $("#modelSummary").html("");
-        let modelSummaryFacts = summarizer.globalSummaryMap[dataset];
-        let summaryHTML = "<ul>";
-        for(let summaryFact of modelSummaryFacts){
-            summaryHTML += "<li class='globalModelSummaryFact' factData='"+JSON.stringify(summaryFact)+"'>"+summaryFact['description']+"</li>";
+        // let modelSummaryFacts = summarizer.globalSummaryMap[dataset];
+        // let summaryHTML = "<ul>";
+        // for(let summaryFact of modelSummaryFacts){
+        //     summaryHTML += "<li class='globalModelSummaryFact' factData='"+JSON.stringify(summaryFact)+"'>"+summaryFact['description']+"</li>";
+        // }
+        // summaryHTML += "</ul>";
+        // $("#modelSummary").html(summaryHTML);
+
+        let modelSummaryFactMap = summarizer.globalSummaryMap[dataset];
+        let summaryHTML = "";
+        for(let trendType of ["Non-linear","Linear-positive","Linear-negative","Monotonic"]){
+            let features = modelSummaryFactMap[trendType]["features"], description = modelSummaryFactMap[trendType]["description"];
+            if(features.length>0){
+                summaryHTML += "<span class='modelSummaryTrendHeader'>"+trendType+"</span><br>";
+                summaryHTML += "<p class='globalModelSummaryFact' factFeatures='"+JSON.stringify(features)+"'>"+description+"</p>";
+            }
         }
-        summaryHTML += "</ul>";
         $("#modelSummary").html(summaryHTML);
+
 
         $(".globalModelSummaryFact").on("mouseover",function (evt) {
             let boundingBox = this.getBoundingClientRect();
             let top = boundingBox.top, right = boundingBox.right;
             $("#modelSummaryTooltip").css("display","block").css("top",top).css("left",right+25);
-            let factData = JSON.parse($(this).attr("factData"));
+            let features = JSON.parse($(this).attr("factFeatures"));
             $("#modelSummaryTooltip").html("");
 
             let featureIndex = 0;
-            for(let feature of factData['features']){
+            for(let feature of features){
                 let featureVlSpec = {
                     "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
                     "data": {"values":globalVars.globalFeatureDataMap[feature]},
