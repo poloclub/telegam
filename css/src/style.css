@@ -304,3 +304,7 @@ h5 {
     color: #01579b;
     text-decoration: underline;
 }
+
+#baseInstanceSummary, #instanceComparisonSummary, #comparedInstanceSummary {
+    cursor: crosshair;
+}
