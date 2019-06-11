@@ -9,15 +9,15 @@
     summarizer.globalSummaryMap = {
         "housing-gam-instance-data" : {
             "Linear-positive" : {
-                "description" : "<b>1 feature</b> has an approximately linearly positive trend in their predictions.",
+                "description" : "For <b>1 feature</b>, the final prediction increases when any feature value increases.",
                 "features" : ["CHAS"]
             },
             "Linear-negative" : {
-                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
+                "description" : "For <b>4 features</b>, the final prediction decreases when any feature value decreases.",
                 "features" : ["INDUS","RAD","PTRATIO","LSTAT"]
             },
             "Non-linear" : {
-                "description" : "<b>8 features</b> have a non-linear trend in their predictions.",
+                "description" : "For <b>8 features</b>, the final prediction is not proportional to a change in any feature value.",
                 "features" : ["CRIM","ZN","NOX","RM","AGE","DIS","TAX","B"]
             },
             "Flat": {
@@ -27,7 +27,7 @@
         },
         "diamonds-gam-instance-data" : {
             "Linear-positive" : {
-                "description" : "<b>5 features</b> have an approximately linearly positive trend in their predictions.",
+                "description" : "For <b>5 features</b>, the final prediction increases when any feature value increases.",
                 "features" : ["carat","color","clarity","depth","y"]
             },
             "Linear-negative" : {
@@ -35,25 +35,25 @@
                 "features" : []
             },
             "Non-linear" : {
-                "description" : "<b>2 features</b> have a non-linear trend in their predictions.",
+                "description" : "For <b>2 features</b>, the final prediction is not proportional to a change in any feature value.",
                 "features" : ["x","z"]
             },
             "Flat": {
-                "description" : "<b>2 features</b> have a largely flat trend in their predictions.",
+                "description" : "For <b>2 features</b>, the final prediction remains constant when any feature value changes.",
                 "features" : ["cut","table"]
             }
         },
         "red-wine-gam-instance-data" : {
             "Linear-positive" : {
-                "description" : "<b>2 features</b> have an approximately linearly positive trend in their predictions.",
+                "description" : "For <b>2 features</b>, the final prediction increases when any feature value increases.",
                 "features" : ["alcohol","residualSugar"]
             },
             "Linear-negative" : {
-                "description" : "<b>4 features</b> have an approximately linearly negative trend in their predictions.",
+                "description" : "For <b>4 features</b>, the final prediction decreases when any feature value decreases.",
                 "features" : ["volatileAcidity","chlorides","density","pH"]
             },
             "Non-linear" : {
-                "description" : "<b>5 features</b> have a non-linear trend in their predictions.",
+                "description" : "For <b>5 features</b>, the final prediction is not proportional to a change in any feature value.",
                 "features" : ["fixedAcidity","citricAcid","freeSulfurDioxide","totalSulfurDioxide","sulphates"]
             },
             "Flat" : {
@@ -63,20 +63,20 @@
         },
         "ames-housing-gam-instance-data" : {
             "Linear-positive" : {
-                "description" : "<b>9 features</b> have an approximately linearly positive trend in their predictions.",
+                "description" : "For <b>9 features</b>, the final prediction increases when any feature value increases.",
                 "features" : ["LotFrontage","LotArea","OverallQual","OverallCond","TotalBsmtSF","FirstFlrSF"
                     ,"SecondFlrSF","GarageCars","ThreeSsnPorch"]
             },
             "Linear-negative" : {
-                "description" : "<b>2 features</b> have an approximately linearly negative trend in their predictions.",
+                "description" : "For <b>2 features</b>, the final prediction decreases when any feature value decreases.",
                 "features" : ["KitchenAbvGr","EnclosedPorch"]
             },
             "Non-linear" : {
-                "description" : "<b>6 features</b> have a non-linear trend in their predictions.",
+                "description" : "For <b>6 features</b>, the final prediction is not proportional to a change in any feature value.",
                 "features" : ["BsmtFinSFOne","GrLivArea","GarageArea","WoodDeckSF","OpenPorchSF","PoolArea"]
             },
             "Flat" : {
-                "description" : "<b>18 features</b> have a largely flat trend in their predictions.",
+                "description" : "For <b>18 features</b>, the final prediction remains constant when any feature value changes.",
                 "features" : ["MSSubClass","YearRemodAdd","TotRmsAbvGrd","MasVnrArea","BsmtFinSFTwo","BsmtUnfSF",
                     "LowQualFinSF","BsmtFullBath","BsmtHalfBath","FullBath","HalfBath","BedroomAbvGr",
                     "Fireplaces","ScreenPorch","MiscVal","GarageYrBlt","MoSold","YrSold"]
@@ -347,79 +347,79 @@
         if(totalPredictionDifferenceStatus=='SMALL'){
             if(featurePredictionDifferenceStatus=="CONSISTENT_SIMILAR"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1){
-                    summary = "<b>Overall predictions are similar</b> with <b>all features contributing similarly</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> with <b>all features contributing similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are similar</b> with <b>all " + (summarizer.featureCount) + " features contributing similarly</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> with <b>all " + (summarizer.featureCount) + " features contributing similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> with <b>all " + (summarizer.featureCount) + " features contributing similarly</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> with <b>all " + (summarizer.featureCount) + " features contributing similarly</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="CONSISTENT_DIFFERENT"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions are similar</b> but <b>most features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> but <b>most features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are similar</b> but <b>over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"% of the features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> but <b>over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"% of the features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) features contribute differently</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="VARIED"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions are similar</b> but <b>some features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> but <b>some features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObjs.length/summarizer.featureCount)*100).toFixed(2)+"%) contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are similar</b> but <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObjs.length/summarizer.featureCount)*100).toFixed(2)+"%) contribute differently</b> from both instances";
                 }
             }
         }else if(totalPredictionDifferenceStatus=='MODERATE'){
             if(featurePredictionDifferenceStatus=="CONSISTENT_SIMILAR"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions vary</b> but <b>all features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> but <b>all features contribute similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions vary</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="CONSISTENT_DIFFERENT"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions vary</b> and <b>most features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> and <b>most features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions vary</b> and <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> and <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> and <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> and <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) contribute differently</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="VARIED"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions vary</b> potentially due to <b>some features contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> potentially due to <b>some features contributing differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions vary</b> potentially due to <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions vary</b> potentially due to <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contributing differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> potentially due to <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length/summarizer.featureCount)*100).toFixed(2)+"%) contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" vary</b> potentially due to <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length/summarizer.featureCount)*100).toFixed(2)+"%) contributing differently</b> from both instances";
                 }
             }
         }else if(totalPredictionDifferenceStatus=='LARGE'){
             if(featurePredictionDifferenceStatus=="CONSISTENT_SIMILAR"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions are very different</b> but <b>all features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> but <b>all features contribute similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are very different</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> but <b>all "+summarizer.featureCount+" features contribute similarly</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="CONSISTENT_DIFFERENT"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions are very different</b> with <b>most features contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> with <b>most features contributing differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are very different</b> with <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> with <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features contributing differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> with <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) contributing differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> with <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. over "+(summarizer.comparisonParams.featurePredictionCountThreshold*100).toFixed(2)+"%) contributing differently</b> from both instances";
                 }
             }else if(featurePredictionDifferenceStatus=="VARIED"){
                 if(summarizer.comparisonParams.summaryDetailLevel==1) {
-                    summary = "<b>Overall predictions are very different</b> potentially due to <b>some features that contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> potentially due to <b>some features that contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==2){
-                    summary = "<b>Overall predictions are very different</b> potentially due to the <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features that contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions are very different</b> potentially due to the <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features that contribute differently</b> from both instances";
                 }else if(summarizer.comparisonParams.summaryDetailLevel==3){
-                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> potentially due to the <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length/summarizer.featureCount)*100)+"%) that contribute differently</b> to both instances";
+                    summary = "<b>Overall predictions of "+totalPredictionDifferenceObj['instance1TotalPrediction'].toFixed(2)+" and "+totalPredictionDifferenceObj['instance2TotalPrediction'].toFixed(2)+" are very different</b> potentially due to the <b>"+featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length+" features (i.e. "+((featurePredictionDifferenceObj['featurePredictionDifferenceObjs'].length/summarizer.featureCount)*100)+"%) that contribute differently</b> from both instances";
                 }
             }
         }
