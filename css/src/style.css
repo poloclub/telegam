@@ -179,7 +179,7 @@ input:checked+.slider:before {
 }
 
 .detailLevelSlider {
-    width: 35%;
+    width: 30%;
 }
 
 #summarySentence {
