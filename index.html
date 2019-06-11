@@ -66,15 +66,16 @@
 <div id="wrapper">
     <div class="row">
         <div id="options" class="col-md-3">
-            <i class="fa fa-database"></i>:
+            <p style="margin-bottom:25px"><strong>Dataset + model:</strong>
+            <!-- <i class="fa fa-database"></i> -->
+            <!-- <br> -->
             <select id="datasetSelector">
                 <option value="housing-gam-instance-data">Housing</option>
                 <option value="ames-housing-gam-instance-data">AMES-Housing</option>
                 <option value="diamonds-gam-instance-data">Diamonds</option>
                 <option value="red-wine-gam-instance-data">Wine</option>
             </select>
-            <br><br>
-            <b>Sort by magnitude</b> <input id="sortByMagnitudeCheckbox" type="checkbox" checked>
+            </p>
             <!--<br><br>-->
             <!--<input id="sentenceDisplayCheckbox" type="checkbox" checked> Show summary-->
             <!--<b>Sort by magnitude:</b>-->
@@ -82,15 +83,16 @@
                 <!--<input type="checkbox" id="sortByMagnitudeCheckbox" checked>-->
                 <!--<span class="slider round"></span>-->
             <!--</label>-->
-            <br><br>
             <!--Summary type:-->
             <span style="display: flex;">
-                <p><b>Summary type:</b>&nbsp;&nbsp;</p>
-                <p>Brief</p>&nbsp;&nbsp;&nbsp;&nbsp;
+                <p style="margin-bottom:25px"><strong>Resolution:</strong>&nbsp;&nbsp;</p>
+                <p style="padding-right: 25px;">Brief</p>
                 <div id="detail-slider" class="detailLevelSlider"></div>
-                <p>Detailed</p>
+                <p style="padding-left: 25px;">Detailed</p>
             </span>
-            <br>
+            <p style="margin-bottom:25px"><strong>Sort by magnitude:</strong> <input id="sortByMagnitudeCheckbox" type="checkbox" checked></p>
+            <!-- <br> -->
+            <!-- <br> -->
             <div style="border: 1px solid var(--border-color)">
                 <button class="collapsible" style="border-bottom: 1px solid var(--border-color)">Model Feature Summary</button>
                 <div class="content" id="modelSummary">
