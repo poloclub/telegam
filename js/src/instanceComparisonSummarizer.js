@@ -73,7 +73,7 @@
             },
             "Non-linear" : {
                 "description" : "For <b>6 features</b>, the final prediction is not proportional to a change in any feature value.",
-                "features" : ["BsmtFinSFOne","GrLivArea","GarageArea","WoodDeckSF","OpenPorchSF","PoolArea"]
+                "features" : ["GarageArea","GrLivArea","BsmtFinSFOne","WoodDeckSF","OpenPorchSF","PoolArea"]
             },
             "Flat" : {
                 "description" : "For <b>18 features</b>, the final prediction remains constant when any feature value changes.",
