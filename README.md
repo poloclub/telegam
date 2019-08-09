@@ -10,7 +10,7 @@ TeleGam is a prototype system that demonstrates how visualizations and verbaliza
 
 ## Live Demo
 
-For a live demo, visit: [poloclub.github/io/telegam][demo]
+For a live demo, visit: [poloclub.github.io/telegam][demo]
 
 
 ## Installation and Running Locally
