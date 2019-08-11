@@ -1,10 +1,10 @@
 # TeleGam
 *Combining Visualization and Verbalization for Interpretable Machine Learning*
 
-TeleGam is a prototype system that demonstrates how visualizations and verbalizations can collectively support interactive interpretation of machine learning models, for example, generalized additive models (GAMs).
+[TeleGam][project] is a prototype system that demonstrates how visualizations and verbalizations can collectively support interactive interpretation of machine learning models, for example, generalized additive models (GAMs).
 
 
-<!-- [![TeleGam preview YouTube video](thumbnail.png)]() -->
+[![TeleGam preview YouTube video](thumbnail.png)](https://youtu.be/DKeyhVIABlQ)
 
 ***
 
@@ -35,7 +35,7 @@ MIT License. See [`LICENSE.md`](LICENSE.md).
 
 ## Citation
 
-**TeleGam: Combining Visualization and Verbalization for Interpretable Machine Learning**  
+**[TeleGam: Combining Visualization and Verbalization for Interpretable Machine Learning][project]**  
 Fred Hohman, Arjun Srinivasan, Steven Drucker  
 *IEEE Visualization Conference (VIS). Vancouver, Canada, 2019.*
 
@@ -47,3 +47,4 @@ For questions or support [open an issue][issues].
 [npm]: https://www.npmjs.com
 [issues]: https://github.com/poloclub/telegam/issues
 [demo]: https://poloclub.github.io/telegam/
+[project]: https://fredhohman.com/papers/telegam
